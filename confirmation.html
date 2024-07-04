@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pemesanan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Indonesian Tourism</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="culture.html">Kebudayaan</a></li>
+                    <li><a href="tourist-attractions.html">Tempat Wisata</a></li>
+                    <li><a href="hotels.html">Hotel</a></li>
+                    <li><a href="transactions.html">Pemesanan Hotel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Konfirmasi Pemesanan Hotel</h2>
+            <div id="confirmationDetails">
+                <p>Terima kasih atas pemesanan Anda di hotel:</p>
+                <h3 id="hotelName"></h3>
+                <p><strong>Harga:</strong> <span id="hotelPrice"></span></p>
+                <p><strong>Alamat:</strong> <span id="hotelAddress"></span></p>
+                <button onclick="printConfirmation()">Cetak Konfirmasi</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Indonesian Tourism. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Function untuk mengisi data konfirmasi pemesanan hotel
+        window.onload = function() {
+            let bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
+            if (bookingData) {
+                document.getElementById('hotelName').textContent = bookingData.hotelName;
+                document.getElementById('hotelPrice').textContent = bookingData.price;
+                document.getElementById('hotelAddress').textContent = bookingData.address;
+            }
+        };
+
+        // Function untuk mencetak konfirmasi pemesanan hotel
+        function printConfirmation() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
